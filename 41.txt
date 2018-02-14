@@ -1,0 +1,42 @@
+'''
+A 10-substring of a number is a substring of its digits that sum up to 10.
+
+For example, the 10-substrings of the number 3523014 are:
+3523014, 3523014, 3523014, 3523014
+
+Write a python function, find_ten_substring(num_str) which accepts a string and returns the list of 10-substrings of that string.
+
+Handle the possible errors in the code written inside the function.
+
+Sample Input	Expected Output
+'3523014'	['5230', '23014', '523', '352']
+'''
+
+
+#PF-Assgn-41
+from _ast import Num
+def find_ten_substring(num_str):
+    num_list = list(num_str)
+    result = []
+    start = 0
+    for i in range(len(num_list)):
+        sum = 0
+        temp = 0
+        for j in range(start,len(num_list)):
+            sum += int(num_list[j])
+            temp = temp*10 + int(num_list[j])
+            if sum == 10 and temp not in result:
+                if (j+1) < len(num_list):
+                    if num_list[j+1] == '0':
+                        result.append(str(temp)+'0')
+                result.append(str(temp))
+                start += 1
+                break
+            elif sum > 10:
+                start += 1
+    return result
+
+num_str="45164"
+#print("The number is:",num_str)
+result_list=find_ten_substring(num_str)
+print(result_list)
