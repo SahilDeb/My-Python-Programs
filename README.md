@@ -1,2 +1,2 @@
 # My-Python-Programs
-The programs I practised while learning python
+Small utility python programs I practised in order to get a better grasp on Python3 fundamentals.
